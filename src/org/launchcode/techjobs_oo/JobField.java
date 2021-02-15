@@ -7,7 +7,6 @@ public class JobField {
     private static int nextId = 1;
     private String value;
 
-
     public JobField(){
         id = nextId;
         nextId++;

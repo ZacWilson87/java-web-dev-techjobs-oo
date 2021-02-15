@@ -1,11 +1,9 @@
 package org.launchcode.techjobs_oo;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Job extends JobField{
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String name;
     private Employer employer;
@@ -70,23 +68,4 @@ public class Job extends JobField{
         return coreCompetency;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public void setPositionType(PositionType positionType) {
-        this.positionType = positionType;
-    }
-
-    public void setCoreCompetency(CoreCompetency coreCompetency) {
-        this.coreCompetency = coreCompetency;
-    }
 }
