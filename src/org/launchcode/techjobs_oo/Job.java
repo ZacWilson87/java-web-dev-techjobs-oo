@@ -1,11 +1,12 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class Job {
+public class Job extends JobField{
 
-    private int id;
-    private static int nextId = 1;
+
 
     private String name;
     private Employer employer;
@@ -18,41 +19,37 @@ public class Job {
     //  the 'id' field.
 
     public Job() {
-        id = nextId;
-        nextId++;
+
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this.name = name;
+    public Job(String name,
+               Employer employer,
+               Location location,
+               PositionType positionType,
+               CoreCompetency coreCompetency) {
+        this();
+        this.name = name.isBlank() ? "Data not available" : name;
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
-
     }
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Job job = (Job) object;
-        return id == job.id && name.equals(job.name) && employer.equals(job.employer) && location.equals(job.location) && positionType.equals(job.positionType) && coreCompetency.equals(job.coreCompetency);
-    }
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, name, employer, location, positionType, coreCompetency);
+        return Objects.hash(super.hashCode(), getId(), name, employer, location, positionType, coreCompetency);
     }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
-
-    public int getId() {
-        return id;
+    @Override
+    public String toString(){
+        return "\nID:  " + getId() + "  \n"
+                + "Name:  " + getName() + "  \n"
+                + "Employer:  " + getEmployer() + "  \n"
+                + "Location:  " + getLocation() + "  \n"
+                + "Position Type:  " + getPositionType() + "  \n"
+                + "Core Competency:  " + getCoreCompetency();
     }
+
 
     public String getName() {
         return name;
@@ -72,5 +69,25 @@ public class Job {
 
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setPositionType(PositionType positionType) {
+        this.positionType = positionType;
+    }
+
+    public void setCoreCompetency(CoreCompetency coreCompetency) {
+        this.coreCompetency = coreCompetency;
     }
 }
