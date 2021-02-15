@@ -1,3 +1,4 @@
+
 package org.launchcode.techjobs_oo.Tests;
 
 import org.junit.Before;
@@ -6,20 +7,18 @@ import org.launchcode.techjobs_oo.*;
 
 import static org.junit.Assert.*;
 
-public class JobTest {
-    Job job1;
-    Job job2;
-    Job job3;
-    Job job4;
-    Job job5;
+public class JobTest extends JobField{
+    Job job1, job2, job3, job4, job5, job6;
+
 
     @Before
     public void testCases() {
         job1 = new Job();
         job2 = new Job();
         job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        job6 = new Job("", new Employer(""), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
     }
 
@@ -45,20 +44,20 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality(){
-                assertNotEquals(job4, job5);
+        assertNotEquals(job4, job5);
     }
 
     @Test
     public void testToStringMethod(){
-        Job job6 = new Job("", new Employer(""), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String expect = "\nID:  " + job6.getId() + "  \n"
+                String expect = "\nID:  " + job6.getId() + "  \n"
                 + "Name:  " + job6.getName() + "  \n"
                 + "Employer:  " + job6.getEmployer() + "  \n"
                 + "Location:  " + job6.getLocation() + "  \n"
                 + "Position Type:  " + job6.getPositionType() + "  \n"
-                + "Core Competency:  " + job6.getCoreCompetency() + "  \n";
+                + "Core Competency:  " + job6.getCoreCompetency();
 
         assertEquals(expect, job6.toString());
 
     }
 }
+

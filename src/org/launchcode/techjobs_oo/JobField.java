@@ -8,7 +8,6 @@ public class JobField {
     private String value;
 
 
-
     public JobField(){
         id = nextId;
         nextId++;
@@ -19,19 +18,17 @@ public class JobField {
         this.value = value.isBlank() ? "Data not available" : value;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof JobField)) return false;
         JobField jobField = (JobField) o;
-        return getId() == jobField.getId();
+        return id == jobField.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 
     @Override

@@ -5,21 +5,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class Job extends JobField{
-
-
-
+    private int id;
+    private static int nextId = 1;
     private String name;
     private Employer employer;
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
-
-    public Job() {
-
+    public Job(){
+    id = nextId;
+    nextId++;
     }
 
     public Job(String name,
@@ -37,12 +33,12 @@ public class Job extends JobField{
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getId(), name, employer, location, positionType, coreCompetency);
+        return Objects.hash(super.hashCode(), id, name, employer, location, positionType, coreCompetency);
     }
 
     @Override
     public String toString(){
-        return "\nID:  " + getId() + "  \n"
+        return "\nID:  " + id + "  \n"
                 + "Name:  " + getName() + "  \n"
                 + "Employer:  " + getEmployer() + "  \n"
                 + "Location:  " + getLocation() + "  \n"
@@ -50,6 +46,9 @@ public class Job extends JobField{
                 + "Core Competency:  " + getCoreCompetency();
     }
 
+    public int getId(){
+        return id;
+    }
 
     public String getName() {
         return name;
